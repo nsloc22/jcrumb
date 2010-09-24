@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>JCrumb - Instant Breadcrumbs</title>
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+		<link href="css/styles.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="css/jCrumb.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="css/jCrumbGray.css" media="all" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="content">
+			<h1>JCrumb - Instant Breadcrumbs Demo Usage</h1>
+			<p>Version 1.0 - <a href="mailto:loktar69@hotmail.com" title="Support Email">Support Contact</a></p>
+			<h2>Must be run through with a web server for cookies to be generated to save breadcrumbs</h2>
+			<p>First click the site links in order to get some breadcrumbs generated</p>
+			<ul>
+				<li><a href="index.html?t=JCrumb Main">breadcrumbs</a> </li>
+				<li><a href="index.html?t=JCrumb Page 1 Long Title Like a boss">Page 1</a></li>
+				<li><a href="index.html?t=JCrumb Page 2">Page 2</a></li>
+				<li><a href="index.html?t=JCrumb Page 3">Page 3</a></li>
+			</ul>
+			
+
+			<div id="basic"></div>
+			<br/>
+			
+			<div id="jqui"></div>
+			<br/>
+			<div id="switch"></div>
+			<br/>
+			
+			<div id="gray"></div>
+			<br/>
+		</div>
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.jcrumb.js"></script>
+		<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/"></script>
+		<script type="text/javascript">			
+			$(document).ready(function(){
+				// change the title just to simulate different pages
+				var title = "[\\?&]t=([^&#]*)",
+					regex = new RegExp(title),
+					result = regex.exec( unescape(window.location.href) );
+				
+				if(result){	
+					$('title').text(result[1]);
+				}else{
+					$('title').text("JCrumb Main");
+				}
+				$('#switch').themeswitcher();
+				
+				// jCrumb initialization and useage
+				$('#basic').jCrumb({maxCrumbs:4});
+				$('#jqui').jCrumb({maxCrumbs:5, jqUI : true});
+				$('#gray').jCrumb({maxCrumbs:4, defaultClass : 'jCrumb-gray', seperator:false});
+			});
+		</script>
+	</body>
+</html>
